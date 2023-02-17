@@ -2,8 +2,17 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false
+import { IEnvironment } from 'src/app/types/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+export const environment: IEnvironment = {
+  production: false,
+  modules: [
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+    }),
+  ],
 };
 
 /*
